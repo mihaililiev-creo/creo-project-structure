@@ -23,7 +23,7 @@ class _RestClient implements RestClient {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ExampleDto>(Options(
       method: 'GET',
@@ -32,7 +32,7 @@ class _RestClient implements RestClient {
     )
             .compose(
               _dio.options,
-              '/some-strings/',
+              '/example/',
               queryParameters: queryParameters,
               data: _data,
             )

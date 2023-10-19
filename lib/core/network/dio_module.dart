@@ -1,10 +1,11 @@
+import 'package:creo_project_structure/core/constants.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
 @module
 abstract class DioModule {
   final apiUrl = const String.fromEnvironment(
-    'API_URL',
+    EnvironmentKeys.API_URL,
     defaultValue: 'https://example/api/v1/',
   );
 

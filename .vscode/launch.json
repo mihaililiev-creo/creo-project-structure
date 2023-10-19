@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "creo_project_structure",
+      "name": "creo_project_structure (dev)",
       "request": "launch",
       "type": "dart",
       "toolArgs": ["--dart-define-from-file", ".dev.env"]
