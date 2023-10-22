@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'rest_client.dart';
+part of 'client.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'rest_client.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _RestClient implements RestClient {
-  _RestClient(
+class _ExampleClient implements ExampleClient {
+  _ExampleClient(
     this._dio, {
     this.baseUrl,
   });
@@ -19,11 +19,11 @@ class _RestClient implements RestClient {
   String? baseUrl;
 
   @override
-  Future<ExampleDto> getSomeData() async {
+  Future<ExampleDto> getExampleDto() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ExampleDto>(Options(
       method: 'GET',
@@ -32,7 +32,7 @@ class _RestClient implements RestClient {
     )
             .compose(
               _dio.options,
-              '/some-data/',
+              '/example/',
               queryParameters: queryParameters,
               data: _data,
             )

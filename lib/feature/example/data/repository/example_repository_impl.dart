@@ -1,4 +1,4 @@
-import 'package:creo_project_structure/core/network/rest_client.dart';
+import 'package:creo_project_structure/feature/example/data/repository/client.dart';
 import 'package:creo_project_structure/feature/example/domain/model/example_model.dart';
 import 'package:creo_project_structure/feature/example/domain/repository/example_repository.dart';
 import 'package:injectable/injectable.dart';
@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 class ExampleRepositoryImpl implements ExampleRepository {
   ExampleRepositoryImpl(this._client);
 
-  final RestClient _client;
+  final ExampleClient _client;
 
   @override
   Future<ExampleModel> getExample() async {
