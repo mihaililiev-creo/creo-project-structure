@@ -14,9 +14,9 @@ import 'package:injectable/injectable.dart' as _i2;
 
 import '../feature/example/data/repository/client.dart' as _i5;
 import '../feature/example/data/repository/example_repository_impl.dart' as _i7;
-import 'mappers/error_mapper.dart' as _i4;
 import '../feature/example/domain/repository/example_repository.dart' as _i6;
 import '../feature/example/presentation/cubit/example_cubit.dart' as _i9;
+import 'mappers/error_mapper.dart' as _i4;
 import 'network/dio_module.dart' as _i10;
 import 'network/rest_client.dart' as _i8;
 
@@ -34,7 +34,9 @@ extension GetItInjectableX on _i1.GetIt {
     final dioModule = _$DioModule();
     final restModule = _$RestModule();
     gh.lazySingleton<_i3.Dio>(() => dioModule.dio);
-    gh.factory<_i4.ErrorMapper>(() => _i4.ErrorMapper());
+    gh.lazySingleton<_i4.DioErrorMapper>(() => _i4.DioErrorMapper());
+    gh.lazySingleton<_i4.ErrorMapper>(
+        () => _i4.ErrorMapper(gh<_i4.DioErrorMapper>()));
     gh.lazySingleton<_i5.ExampleClient>(
         () => restModule.exampleClient(gh<_i3.Dio>()));
     gh.lazySingleton<_i6.ExampleRepository>(() => _i7.ExampleRepositoryImpl(

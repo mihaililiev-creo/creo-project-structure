@@ -20,7 +20,7 @@ abstract class $AppRouter extends _i2.RootStackRouter {
     ExampleRoute.name: (routeData) {
       return _i2.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.ExamplePage(),
+        child: _i2.WrappedRoute(child: const _i1.ExamplePage()),
       );
     }
   };

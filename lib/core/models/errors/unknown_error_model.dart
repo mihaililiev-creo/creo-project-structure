@@ -1,11 +1,11 @@
 part of 'error_model.dart';
 class UnknownErrorModel extends ErrorModel {
   UnknownErrorModel({
-    this.exception,
+    this.object,
   });
 
-  final Exception? exception;
+  final Object? object;
 
   @override
-  String toString() => exception.toString();
+  String toString() => object.toString();
 }

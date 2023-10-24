@@ -2,7 +2,7 @@ import 'package:creo_project_structure/core/models/errors/error_model.dart';
 import 'package:creo_project_structure/feature/example/domain/model/example_model.dart';
 import 'package:creo_project_structure/feature/example/domain/repository/example_repository.dart';
 import 'package:creo_project_structure/feature/example/presentation/cubit/example_cubit.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_test/flutter_test.dart' ;
 import 'package:mocktail/mocktail.dart';
 import 'package:bloc_test/bloc_test.dart';
 
@@ -48,13 +48,13 @@ void main() {
       blocTest<ExampleCubit, ExampleState>(
         'emits ExampleUnknownError after failing to fetch ExampleModel',
         setUp: () {
-          when(repository.getExample).thenThrow( UnknownErrorModel(exception: Exception('Error')));
+          when(repository.getExample).thenThrow( UnknownErrorModel());
         },
         build: () => ExampleCubit(repository),
         act: (cubit) => cubit.getSomeStrings(),
         expect: () => [
           ExampleLoading(),
-          const ExampleUnknownError( message: 'Exception: Error'),
+           const ExampleUnknownError(message: 'null' ),
         ],
         verify: (_) => verify(repository.getExample).called(1),
       );

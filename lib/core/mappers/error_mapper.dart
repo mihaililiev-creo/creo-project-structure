@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
@@ -8,36 +7,32 @@ part 'dio_error_mapper.dart';
 
 typedef Callback<E> = Future<E> Function();
 
-@injectable
+@lazySingleton
 class ErrorMapper {
+  ErrorMapper(this._dioErrorMapper);
+
+  final DioErrorMapper _dioErrorMapper;
+
   Future<E> execute<E>(
     Callback<E> callback,
   ) async {
     try {
       return await callback();
-    } catch (e, _) {
-      throw _mapToBusinessModel(e);
+    } on ErrorModel {
+      rethrow;
+    } on Exception catch (e) {
+      throw _mapExceptionToBusinessError(e);
+    } catch (e) {
+      throw UnknownErrorModel(object: e);
     }
-  }
-
-  Object _mapToBusinessModel(Object object) {
-    if (object is ErrorModel) {
-      return object;
-    }
-
-    if (object is Exception) {
-      return _mapExceptionToBusinessError(object);
-    }
-
-    return object;
   }
 
   ErrorModel _mapExceptionToBusinessError(Exception exception) {
     if (exception is DioException) {
-      return exception.asErrorModel();
+      return _dioErrorMapper.asErrorModel(exception);
     }
 
-    return UnknownErrorModel(exception: exception);
+    return UnknownErrorModel(object: exception);
   }
 }
 

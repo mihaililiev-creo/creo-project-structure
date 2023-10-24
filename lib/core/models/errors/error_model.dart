@@ -8,4 +8,4 @@ part 'not_found_error_model.dart';
 
 part 'unknown_error_model.dart';
 
-class ErrorModel implements Exception {}
+sealed class ErrorModel implements Exception {}

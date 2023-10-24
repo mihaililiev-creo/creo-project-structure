@@ -19,7 +19,7 @@ class ExampleRepositoryImpl implements ExampleRepository {
   @override
   Future<ExampleModel> getExample() async {
     return _errorMapper.execute(() async {
-      //   simulateDioError();
+        // simulateDioError();
       //   simulateUnknownError();
       // return ExampleModel(
       //     name: '',
