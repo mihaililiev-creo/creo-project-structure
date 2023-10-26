@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:creo_project_structure/i18n/strings.g.dart';
 
 import 'core/theme/design_system.dart';
-import 'core/theme/design_system/kmp_icons_icons.dart';
 import 'core/theme/testapp_theme.dart';
 
 void main() {
@@ -45,7 +44,7 @@ class ErrorHandlerWidget extends StatefulWidget {
   const ErrorHandlerWidget({super.key, required this.child});
 
   @override
-  _ErrorHandlerWidgetState createState() => _ErrorHandlerWidgetState();
+  State<ErrorHandlerWidget> createState() => _ErrorHandlerWidgetState();
 }
 
 class _ErrorHandlerWidgetState extends State<ErrorHandlerWidget> {

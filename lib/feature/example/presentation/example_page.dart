@@ -6,7 +6,6 @@ import 'package:creo_project_structure/i18n/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/theme/design_system/kmp_icons_icons.dart';
 
 @RoutePage()
 class ExamplePage extends StatelessWidget implements AutoRouteWrapper {
@@ -56,7 +55,6 @@ class ExamplePage extends StatelessWidget implements AutoRouteWrapper {
             );
           },
         ),
-        const Icon(KmpIcons.bell),
         Icon(context.designSystem.icons.backArrow),
       ],
     );
