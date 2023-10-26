@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 2
+/// Strings: 3
 ///
-/// Built on 2023-10-23 at 13:16 UTC
+/// Built on 2023-10-25 at 14:26 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -151,6 +151,7 @@ class _StringsEn implements BaseTranslations<AppLocale, _StringsEn> {
 	// Translations
 	String get example => 'example';
 	String get translation => 'translation';
+	String get somethingWentWrong => 'Something went wrong. Please try again later.';
 }
 
 /// Flat map(s) containing all translations.
@@ -161,6 +162,7 @@ extension on _StringsEn {
 		switch (path) {
 			case 'example': return 'example';
 			case 'translation': return 'translation';
+			case 'somethingWentWrong': return 'Something went wrong. Please try again later.';
 			default: return null;
 		}
 	}

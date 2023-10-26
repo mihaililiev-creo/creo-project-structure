@@ -1,9 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:creo_project_structure/core/injection_container.dart';
+import 'package:creo_project_structure/core/theme/design_system.dart';
 import 'package:creo_project_structure/feature/example/presentation/cubit/example_cubit.dart';
 import 'package:creo_project_structure/i18n/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../core/theme/design_system/kmp_icons_icons.dart';
 
 @RoutePage()
 class ExamplePage extends StatelessWidget implements AutoRouteWrapper {
@@ -17,38 +20,45 @@ class ExamplePage extends StatelessWidget implements AutoRouteWrapper {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ExampleCubit, ExampleState>(
-      bloc: context.read<ExampleCubit>(),
-      listener: (ctx, state) {
-        if (state is ExampleUnknownError) {
-          // Show snack bar for errors that we do not have specific ErrorModel
-          ScaffoldMessenger.of(ctx).showSnackBar(
-            SnackBar(
-              content: Text(state.message),
-            ),
-          );
-        }
-        if (state is ExampleNetworkError) {
-          // Show dialog for network (DioException)
-          // errors that we do have specific ErrorModel
-          openDialog(context, state.message);
-        }
-        if (state is ExampleContent) {
-          ScaffoldMessenger.of(ctx).showSnackBar(
-            SnackBar(
-              content: Text(state.exampleModel.toString()),
-            ),
-          );
-        }
-      },
-      builder: (context, state) {
-        return Center(
-          child: FilledButton(
-            child: Text(t.example),
-            onPressed: () => context.read<ExampleCubit>().getSomeStrings(),
-          ),
-        );
-      },
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        BlocConsumer<ExampleCubit, ExampleState>(
+          bloc: context.read<ExampleCubit>(),
+          listener: (ctx, state) {
+            if (state is ExampleUnknownError) {
+              // Show snack bar for errors that we do not have specific ErrorModel
+              ScaffoldMessenger.of(ctx).showSnackBar(
+                SnackBar(
+                  content: Text(state.message),
+                ),
+              );
+            }
+            if (state is ExampleNetworkError) {
+              // Show dialog for network (DioException)
+              // errors that we do have specific ErrorModel
+              openDialog(context, state.message);
+            }
+            if (state is ExampleContent) {
+              ScaffoldMessenger.of(ctx).showSnackBar(
+                SnackBar(
+                  content: Text(state.exampleModel.toString()),
+                ),
+              );
+            }
+          },
+          builder: (context, state) {
+            return Center(
+              child: FilledButton(
+                child: Text(t.example),
+                onPressed: () => context.read<ExampleCubit>().getSomeStrings(),
+              ),
+            );
+          },
+        ),
+        const Icon(KmpIcons.bell),
+        Icon(context.designSystem.icons.backArrow),
+      ],
     );
   }
 

@@ -1,6 +1,11 @@
 import 'package:creo_project_structure/core/injection_container.dart';
 import 'package:creo_project_structure/core/routes/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:creo_project_structure/i18n/strings.g.dart';
+
+import 'core/theme/design_system.dart';
+import 'core/theme/design_system/kmp_icons_icons.dart';
+import 'core/theme/testapp_theme.dart';
 
 void main() {
   configureDependencies();
@@ -20,10 +25,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: TestappTheme.buildTheme(DesignSystem.light()),
+      darkTheme: TestappTheme.buildTheme(DesignSystem.dark()),
       routerConfig: _appRouter.config(),
       builder: (context, child) {
         return ErrorHandlerWidget(
@@ -59,8 +62,12 @@ class _ErrorHandlerWidgetState extends State<ErrorHandlerWidget> {
         // Display a user-friendly error screen
         return Scaffold(
           appBar: AppBar(title: const Text('Error')),
-          body: const Center(
-            child: Text('Something went wrong. Please try again later.'),
+          body: Center(
+            child: Column(
+              children: [
+                Text(t.somethingWentWrong),
+              ],
+            ),
           ),
         );
       },
@@ -83,7 +90,7 @@ class ErrorWidgetBuilder extends StatefulWidget {
   });
 
   @override
-  _ErrorWidgetBuilderState createState() => _ErrorWidgetBuilderState();
+  State<ErrorWidgetBuilder> createState() => _ErrorWidgetBuilderState();
 }
 
 class _ErrorWidgetBuilderState extends State<ErrorWidgetBuilder> {
