@@ -1,5 +1,5 @@
 import 'package:creo_project_structure/feature/example/data/model/example_dto.dart';
-import 'package:creo_project_structure/feature/example/data/repository/client.dart';
+import 'package:creo_project_structure/feature/example/data/repository/example_client.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
